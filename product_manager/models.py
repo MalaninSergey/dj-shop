@@ -11,6 +11,8 @@ from django.db import models as models
 from django_extensions.db import fields as extension_fields
 
 
+
+# Сущности для БД
 class Product(models.Model):
     # Fields
     name = models.CharField(max_length=155)

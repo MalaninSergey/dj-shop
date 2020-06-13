@@ -2,6 +2,8 @@ from django.contrib import admin
 from django import forms
 from .models import Product, Category
 
+
+# Регистрация объекто  админ панели
 class ProductAdminForm(forms.ModelForm):
 
     class Meta:

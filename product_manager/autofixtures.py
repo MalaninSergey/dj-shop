@@ -7,6 +7,8 @@ from .models import Product, Category
 from autofixture import generators, register, AutoFixture
 
 
+
+# быстрая генерация данных
 class ProductAutoFixture(AutoFixture):
     field_values = {
         'name': generators.ChoicesGenerator(

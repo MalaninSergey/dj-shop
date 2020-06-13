@@ -3,6 +3,8 @@ from rest_framework import routers
 
 from . import views
 
+
+# роутинг сайта
 urlpatterns = (
     # urls for Product
     path('', views.IndexView.as_view(), name='index'),

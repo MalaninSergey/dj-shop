@@ -7,7 +7,7 @@ from django.views.generic import DetailView, ListView, UpdateView, CreateView, D
 from .models import Product, Category
 from .forms import ProductForm
 
-
+# логика и отображение данных
 def orders(request):
     if request.user.is_authenticated:
         ord = Product.objects.filter(in_or=True)
