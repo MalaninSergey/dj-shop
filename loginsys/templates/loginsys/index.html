@@ -1,0 +1,155 @@
+{% load static %}
+{% load render_bundle from webpack_loader %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href=" {% static "/static/style.css" %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap&subset=cyrillic" rel="stylesheet" />
+    <title>Document</title>
+</head>
+    <body>
+        {% render_bundle 'common' %}
+        <section class="auth">
+            <una-header main>
+                <h1 slot="title">Юна</h1>
+            </una-header>
+            <div class="content-wrapper row">
+                <div class="text-block">
+                    <h2>Учить русский - просто!</h2>
+                    <p>Юна - удобный сервис для студентов и преподавателей!
+Сервис создан для обучения дома и в классе. Справочная информация поможет самостоятельно разобраться в сложных грамматических правилах, а система Юна подскажет правильный вариант.
+                    </p>
+                </div>
+                <div class="card">
+                    <una-content-switch>
+                        <button slot="switch-buttons" selected>Регистрация</button>
+                        <button slot="switch-buttons">Авторизация</button>
+                        <form method="POST" action="/register/" slot="content">
+                            {% csrf_token %}
+                            {{ form_register.non_field_errors }}
+                            <una-form>
+                                <una-input>
+                                    {{ form_register.email }}
+                                </una-input>
+                                <una-input type="password">
+                                {{ form_register.password1 }}</una-input>
+                                <una-input type="password">{{ form_register.password2}}</una-input>
+                                {% for error in form.non_field_errors %}
+                                <span class="error-message">{{ error }}</span>
+                                {% endfor %}
+                                <una-button filled slot="submit-button"><button>Зарегистрироваться</button></una-button>
+                            </una-form>
+                        </form>
+                        <form method="POST" action="/auth/" slot="content">
+                            {{form_auth.non_field_errors}}
+                            <una-form>
+                                {% csrf_token %}
+                                <una-input>
+                                {{ form_auth.email}}
+                                </una-input>
+                                <una-input type="password">
+                                {{ form_auth.password}}
+                                </una-input>
+                                <una-button filled slot="submit-button"><button>Войти</button></una-button>
+                                <a class="forgot-pass" href="#">Забыли пароль?</a>
+                            </una-form>
+                        </form>
+                    </una-content-switch>
+                </div>
+            </div>
+        </section>
+        <section class="why">
+            <div class="content-wrapper">
+                <div class="text-block">
+                    <h2>Почему именно Юна?</h2>
+                </div>
+                <div class="row">
+                    <una-block>
+                        <img src="{{ MEDIA_URL }}main_page_image/icon.svg">
+                        <h3>Удобно</h3>
+                        <p>
+                            Упражнения сервиса доступны по всему миру со всех устройств, всё, что необходимо —
+                            быть онлайн!
+                        </p>
+                    </una-block>
+                    <una-block>
+                        <img src="{{ MEDIA_URL }}main_page_image/icon2.svg">
+                        <h3>Увлекательно</h3>
+                        <p>
+                            Упражнения помогут отработать речевые навыки в самых разных коммуникативных
+                            ситуациях.
+                        </p>
+                    </una-block>
+                    <una-block>
+                        <img src="{{ MEDIA_URL }}main_page_image/icon3.svg">
+                        <h3>Эффективно</h3>
+                        <p>
+                            Материал каждого урока отвечает требованиям государственного стандарта и легко
+                            усваивается в ходе выполнения упражнений.
+                        </p>
+                    </una-block>
+                </div>
+            </div>
+        </section>
+        <section class="about">
+            <div class="content-wrapper">
+                <div class="grid-wrapper">
+                    <div class="text-block">
+                        <h2>Полностью интерактивно</h2>
+                        <p>Интерактивные упражнения с использованием тестовых заданий, письменных упражнений, а также аудио- и видеоматериалов отлично дополнят занятия по русскому языку и помогут закрепить материал.</p>
+                        <una-button filled>
+                            <button>Зарегистрироваться</button>
+                        </una-button>
+                    </div>
+                    <div class="text-block">
+                        <h2>О проекте</h2>
+                        <p>Юна — это помощник в изучении русского языка как иностранного, который предлагает комплекс онлайн-упражнений для отработки лексических и грамматических навыков у иностранных студентов.</p>
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="{{ MEDIA_URL }}main_page_image/una-5.png">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contacts">
+            <div class="content-wrapper">
+                <div class="card">
+                    <h2>Пишите нам!</h2>
+                    <form>
+                        <una-form>
+                            <una-input>
+                                <input type="text" slot="input" name="name" placeholder="Имя" />
+                            </una-input>
+                            <una-input>
+                                <input type="email" slot="input" name="name" placeholder="E-mail" />
+                            </una-input>
+                            <una-textarea>
+                                <textarea rows="3" slot="textarea" placeholder="Текст сообщения"></textarea>
+                            </una-textarea>
+                            <div class="check">
+                                <input type="checkbox" id="agreement" name="remember" />
+                                <label for="agreement">Даю согласие на обработку персональных данных</label>
+                            </div>
+                            <una-button filled slot="submit-button"><button>Отправить сообщение</button></una-button>
+                        </una-form>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <una-footer>
+            <span slot="copyright" class="copyright">2019 Una</span>
+            <a slot="links" href="#">Политика конфиденциальности</a>
+            <a slot="links" href="#">Пользовательское соглашение</a>
+            <a slot="links" href="#">О проекте</a>
+            <a slot="links" href="{% url 'lessons:lesson_list' %}">Уроки</a>
+            <a slot="links" href="#">Контакты</a>
+            <a slot="links" href="{% url 'userprofile:profile' %}">Профиль</a>
+            <a slot="socials" class='social' href="https://facebook.com/youlango"><img src="{{ MEDIA_URL }}main_page_image/facebook.svg"></a>
+            <a slot="socials" class='social' href="https://www.instagram.com/youlangio"><img src="{{ MEDIA_URL }}main_page_image/instagram.svg"></a>
+            <a slot="socials" class='social' href="https://vk.com/youlang"><img src="{{MEDIA_URL}}main_page_image/vk.svg"></a>
+        </una-footer>
+    </body>
+</html>

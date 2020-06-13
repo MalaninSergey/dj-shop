@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+	<table class="table">
+		<tr>
+			<td>Name</td>
+			<td>{{ object.name }}</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>{{ object.description }}</td>
+		</tr>
+		<tr>
+			<td>Price ($)</td>
+			<td>${{ object.price }}</td>
+		</tr>
+	</table>
+	<p>
+		<a class="btn btn-primary" href="{{object.set_to_or}}">Buy</a>
+	</p>
+
+	<p>
+		<a class="btn btn-default" href="/">Back</a>
+	</p>
+
+{% endblock %}

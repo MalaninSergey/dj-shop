@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="wrapper">
+        <h1 class="title">Контакты</h1>
+        <p class="text">
+            Юна - удобный сервис для студентов и преподавателей! Сервис создан для обучения
+            дома и в классе. Справочная информация поможет самостоятельно разобраться в
+            сложных грамматических правилах, а система Юна подскажет правильный вариант.
+        </p>
+        <div class="white-card">
+            <h2>Пишите нам!</h2>
+            <form>
+                <una-form style="--form-input-width: 347px; --form-submit-margin: 32px; --form-row-gap: 14px;">
+                    <una-input>
+                        <input type="text" slot="input" name="name" placeholder="Имя" />
+                    </una-input>
+                    <una-input>
+                        <input type="email" slot="input" name="name" placeholder="E-mail" />
+                    </una-input>
+                    <una-textarea>
+                        <textarea rows="3" slot="textarea" placeholder="Текст сообщения"></textarea>
+                    </una-textarea>
+                    <div class="check">
+                        <input type="checkbox" id="agreement" name="remember" />
+                        <label for="agreement">Даю согласие на обработку персональных данных</label>
+                    </div>
+                    <una-button filled slot="submit-button"><button>Отправить сообщение</button></una-button>
+                </una-form>
+            </form>
+        </div>
+    </div>
+{% endblock %}
